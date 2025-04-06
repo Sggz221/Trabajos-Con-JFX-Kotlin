@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="528.0" prefWidth="430.0" spacing="20.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.samuel.calculadora.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <Pane prefHeight="162.0" prefWidth="347.0">
+      <children>
+         <Label fx:id="operationStack" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="14.0" prefHeight="43.0" prefWidth="371.0" style="-fx-background-color: #84966a;" text="1 + 1 =" textFill="#303824">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label fx:id="numberQueue" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="52.0" prefHeight="76.0" prefWidth="371.0" style="-fx-background-color: #84966a;" text="1234567890" textFill="#303824">
+            <font>
+               <Font name="MS PGothic" size="48.0" />
+            </font>
+         </Label>
+         <Label layoutX="14.0" layoutY="-8.0" opacity="0.43" text="Calcoolator" textFill="#7e7e7e">
+            <font>
+               <Font name="Arial Bold" size="13.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <GridPane alignment="CENTER" prefHeight="347.0" prefWidth="390.0">
+     <columnConstraints>
+         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <Button fx:id="percentage" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonPercentagePressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="\%" textFill="WHITE">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="clearE" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonClearEPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #ff5252;" text="CE" textFill="WHITE" GridPane.columnIndex="1">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="clearAll" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonClearAllPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #ff5252;" text="C" textFill="WHITE" GridPane.columnIndex="2">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="back" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonDeletePressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #ff5252;" text="DEL" textFill="WHITE" GridPane.columnIndex="3">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="oneOverX" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#button1OverXPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="1/x" textFill="WHITE" GridPane.rowIndex="1">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="squared" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSquaredPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="x²" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="squareRoot" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSqrtPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="√x" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="division" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonDividePressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="/" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="sevenButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSevenPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="7" textFill="WHITE" GridPane.rowIndex="2">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="eightButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonEightPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="8" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="nineButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonNinePressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="9" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="multiplication" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonMultiplyPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="X" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="fourButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonFourPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="4" textFill="WHITE" GridPane.rowIndex="3">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="oneButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonOnePressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="1" textFill="WHITE" GridPane.rowIndex="4">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="invertSign" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonInversionPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="+/-" textFill="WHITE" GridPane.rowIndex="5">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="fiveButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonFivePressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="5" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="twoButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonTwoPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="2" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="zeroButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonZeroPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="sixButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSixPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="6" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="threeButton" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonThreePressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="3" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="floatingPoint" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCommaPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="," textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="substraction" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonMinusPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="-" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="addition" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonPlusPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #7e7e7e;" text="+" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="equals" minHeight="30.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonEqualsPressed" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #ffcb3b;" text="=" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Button>
+      </children>
+   </GridPane>
+   <Label text="Label" />
+</VBox>
