@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'org.example.calcooladora'
-    mainClass = 'org.example.calcooladora.HelloApplication'
+    mainModule = 'org.example.calculadora'
+    mainClass = 'org.example.calculadora.HelloApplication'
 }
 kotlin {
     jvmToolchain(21)

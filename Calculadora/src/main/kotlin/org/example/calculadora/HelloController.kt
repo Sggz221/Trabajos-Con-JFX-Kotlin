@@ -1,14 +1,16 @@
-package org.example.calcooladora
+package org.example.calculadora
 
 import dev.samuel.calculadora.models.Calculadora
 import javafx.fxml.FXML
 import javafx.scene.control.Button
 import javafx.scene.control.Label
+import org.example.calcooladora.utils.round
+import kotlin.math.roundToInt
 
 
-class HelloController() {
+class HelloController {
     // Components
-    val calculadora = Calculadora()
+    private val calculadora = Calculadora()
 
     @FXML
     /**
@@ -181,81 +183,143 @@ class HelloController() {
      * Elemento 2 almacenado en la pila de operaciones
      */
     private var element2: Double = 0.0
-    // Methods
 
+    /**
+     * Establece si se ha pulsado el boton de coma
+     */
+    private var commaUsed: Boolean = false
+    // Methods
+    /**
+     * Añade un 0
+     */
     fun buttonZeroPressed() {
         numberQueue.text += "0"
     }
 
+    /**
+     * Añade un 1
+     */
     fun buttonOnePressed() {
         numberQueue.text += "1"
     }
 
+    /**
+     * Añade un 2
+     */
     fun buttonTwoPressed() {
         numberQueue.text += "2"
     }
 
+    /**
+     * Añade un 3
+     */
     fun buttonThreePressed() {
         numberQueue.text += "3"
     }
 
+    /**
+     * Añade un 4
+     */
     fun buttonFourPressed() {
         numberQueue.text += "4"
     }
 
+    /**
+     * Añade un 5
+     */
     fun buttonFivePressed() {
         numberQueue.text += "5"
     }
 
+    /**
+     * Añade un 6
+     */
     fun buttonSixPressed() {
         numberQueue.text += "6"
     }
 
+    /**
+     * Añade un 7
+     */
     fun buttonSevenPressed() {
         numberQueue.text += "7"
     }
 
+    /**
+     * Añade un 8
+     */
     fun buttonEightPressed() {
         numberQueue.text += "8"
     }
 
+    /**
+     * Añade un 9
+     */
     fun buttonNinePressed() {
         numberQueue.text += "9"
     }
 
+    /**
+     * Calcula el porcentaje especificado en el prompt del numero anterior
+     */
     fun buttonPercentagePressed() {
         val result = calculadora.porcentaje(processPrompt(numberQueue.text)) * element1
-        numberQueue.text = "$result"
+        numberQueue.text = "${result.round(5)}"
     }
 
+    /**
+     * Elimina el contenido de la linea de prompt
+     */
     fun buttonClearEPressed() {
         clearQueue()
+        commaUsed = false
     }
 
+    /**
+     * Elimina la pila de operaciones y el contenido de la linea de prompt
+     */
     fun buttonClearAllPressed() {
         clearQueue()
+        element1 = 0.0
+        element2 = 0.0
+        commaUsed = false
         operationStack.text = "= "
     }
 
+    /**
+     * Elimina el ultimo elemento de la linea de prompt
+     */
     fun buttonDeletePressed() {
         numberQueue.text = numberQueue.text.slice(IntRange(0, numberQueue.text.length - 2))
     }
 
+    /**
+     * Realiza una funcion de inversion del elemento en la linea de prompt
+     */
     fun button1OverXPressed() {
         val result = calculadora.unoSobreX(processPrompt(numberQueue.text))
-        numberQueue.text = "$result"
+        numberQueue.text = "${result.round(5)}"
     }
 
+    /**
+     * Eleva al cuadrado el elemento de la linea de prompt
+     */
     fun buttonSquaredPressed() {
         val result = calculadora.cuadrado(processPrompt(numberQueue.text))
         numberQueue.text = "$result"
     }
 
+    /**
+     * Realiza la raiz cuadrada del elemento en la linea de prompt
+     */
     fun buttonSqrtPressed() {
         val result = calculadora.raizCuadrada(processPrompt(numberQueue.text))
-        numberQueue.text = "$result"
+        numberQueue.text = "${result.round(5)}"
     }
 
+    /**
+     * Prepara el prompt para realizar una division
+     */
     fun buttonDividePressed() {
         val prompt = processPrompt(numberQueue.text)
         if (element1 == 0.0) element1 = prompt
@@ -264,35 +328,64 @@ class HelloController() {
         operationStack.text = "$element1 / = "
     }
 
+    /**
+     * Prepara el prompt para realizar una multiplicacion
+     */
     fun buttonMultiplyPressed() {
+        val prompt = processPrompt(numberQueue.text)
+        if (element1 == 0.0) element1 = prompt
+        else element2 = prompt
+        numberQueue.text = ""
         operationStack.text = "$element1 x = "
     }
 
+    /**
+     * Prepara el prompt para realizar una resta
+     */
     fun buttonMinusPressed() {
+        val prompt = processPrompt(numberQueue.text)
+        if (element1 == 0.0) element1 = prompt
+        else element2 = prompt
+        numberQueue.text = ""
         operationStack.text = "$element1 - = "
     }
 
+    /**
+     * Prepara el prompt para realizar una suma
+     */
     fun buttonPlusPressed() {
+        val prompt = processPrompt(numberQueue.text)
+        if (element1 == 0.0) element1 = prompt
+        else element2 = prompt
+        numberQueue.text = ""
         operationStack.text = "$element1 + = "
     }
 
+    /**
+     * Cambia el signo del prompt
+     */
     fun buttonInversionPressed() {
         val result = processPrompt(numberQueue.text) * -1
+        numberQueue.text = ""
         numberQueue.text = result.toString()
     }
 
+    /**
+     * Pone la coma de decimales
+     */
     fun buttonCommaPressed() {
-        /*
-        COSAS A COMPROBAR:
-            - El boton de dar a igual ahora comienza evaluando lo que hay en la pila de operaciones y luego actualiza elemento 1 y 2
-            despues resuelve la operacion
-            - Se deberian de poder encadenar operaciones. Dale una vuelta con el evaluateStack
-            - Actualizar el resultado en pantalla para seguir escribiendo comodamente
-         */
+        if(!commaUsed) {
+            numberQueue.text += "."
+            commaUsed = true
+        }
     }
 
+    /**
+     * Resuelve la operacion con la linea de prompt y la pila de operaciones
+     */
     fun buttonEqualsPressed() {
         val operationSign = getOperation()
+        commaUsed = false
         evaluateStack()
         when (operationSign) {
             "+" -> {
@@ -328,28 +421,34 @@ class HelloController() {
         }
     }
 
-    fun getOperation(): String {
+    /**
+     * Obtiene que operacion se quiere hacer
+     */
+    private fun getOperation(): String {
         val prompt: List<String?> = operationStack.text.split(" ")
         return prompt[1]!!
     }
 
-    fun evaluateStack() {
+    /**
+     * Evalua la pila de prompts
+     */
+    private fun evaluateStack() {
         val prompt: List<String?> = operationStack.text.split(" ")
-        element1 = prompt[0]?.toDoubleOrNull() ?: 0.0
         element2 = prompt[2]?.toDoubleOrNull() ?: processPrompt(numberQueue.text) // Process prompt ya evita nulos
     }
 
     /**
      * Procesa [numberQueue] para que devuelva un doble
      */
-    fun processPrompt(numberQueue: String?): Double {
-        return numberQueue?.toDoubleOrNull() ?: 0.0
+    private fun processPrompt(numberQueue: String?): Double {
+        val result = numberQueue?.toDoubleOrNull() ?: 0.0
+        return result.round(5)
     }
 
     /**
      * Limpia la cola de numeros
      */
-    fun clearQueue() {
+    private fun clearQueue() {
         numberQueue.text = ""
     }
 }
