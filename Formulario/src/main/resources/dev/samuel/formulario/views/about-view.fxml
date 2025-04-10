@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="341.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="186.0" prefWidth="139.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="20.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/githubProfile.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="171.0" layoutY="45.0" prefHeight="30.0" prefWidth="133.0" text="Samuel Gomez">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="185.0" layoutY="78.0" prefHeight="30.0" prefWidth="107.0" text="Encuentrame en ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="hyperlink" layoutX="202.0" layoutY="108.0" text="Github">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Hyperlink>
+   </children>
+</AnchorPane>
